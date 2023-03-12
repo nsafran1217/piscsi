@@ -480,6 +480,8 @@ void Disk::AddCachePage(map<int, vector<byte>>& pages, bool changeable) const
 
 	// Only read cache is valid
 
+	//disable read cache
+	buf[0x02] = 1;
 	// Disable pre-fetch transfer length
 	SetInt16(buf, 0x04, -1);
 
