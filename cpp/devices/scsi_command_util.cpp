@@ -62,6 +62,10 @@ void scsi_command_util::ModeSelect(const DeviceLogger& logger, scsi_command cmd,
 
 			has_valid_page_code = true;
 		}
+		//cache page
+		else if (int page = buf[offset]; page == 0x08) {
+			has_valid_page_code = true;
+		}
 		else {
 			stringstream s;
 			s << "Unknown MODE SELECT page code: $" << setfill('0') << setw(2) << hex << page;
